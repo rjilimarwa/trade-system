@@ -1,0 +1,23 @@
+
+app:
+    resource: "@AppBundle/Resources/config/routing/routing.yml"
+    prefix:   /
+
+# HWIOAuthBundle
+hwi_oauth_security:
+    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+    prefix: /connect
+
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix:   /connect
+
+# We override this part of the routing
+hwi_oauth_connect:
+     resource: "@UtilisateursBundle/Resources/config/routing/connect.xml"
+     prefix: /connect
+
+facebook_login:
+    path: /connect/check-facebook
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

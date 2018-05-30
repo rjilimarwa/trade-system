@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+
+{% block titre %} | {{ produit.nom }}{% endblock %}
+{% block description %}{{ produit.description }}{% endblock %}
+
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            {% include '@Ecommerce/Front/Default/col-left.html.twig' %}
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-5">
+                        <img src="{{ produit.image.path }}" width="300" height="300" alt="DevAndClick">
+                    </div>
+
+                    <div class="col-md-4">
+                        <h4>{{ produit.nom }}</h4>
+                        <h5>{{ produit.categories.nom }}</h5>
+                        <p>{{ produit.description }}</p>
+                        <h4>{{ produit.prix|tva(produit.tva.multiplicate) }}€</h4>
+                        {% if panier[produit.id] is not defined %}
+                            <form action="{{ path('ajouter', { 'id' : produit.id }) }}" method="get">
+                                <select name="qte" class="span1 form-control">
+                                    {% for i in 1..10 %}
+                                        <option value="{{ i }}">{{ i }}</option>
+                                    {% endfor %}
+                                </select><br>
+                                <div>
+                                    <button class="btn btn-primary">Ajouter au panier</button>
+                                </div>
+                            </form>
+                        {% else %}
+                            <a href="{{ path('panier') }}" class="btn btn-primary">Produit déjà dans le panier</a>
+                        {% endif %}
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

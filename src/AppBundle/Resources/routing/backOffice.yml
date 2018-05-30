@@ -1,0 +1,27 @@
+app_categories:
+   resource: "@AppBundle/Resources/config/routing/back-office/categories.yml"
+   prefix:   /admin/categories
+
+app_ville:
+   resource: "@AppBundle/Resources/config/routing/back-office/commandes.yml"
+   prefix:   /admin/commandes
+
+app_ region:
+   resource: "@AppBundle/Resources/config/routing/back-office/media.yml"
+   prefix:   /admin/media
+
+app_tva:
+   resource: "@AppBundle/Resources/config/routing/back-office/tva.yml"
+   prefix:   /admin/tva
+
+app_produits:
+   resource: "@AppBundle/Resources/config/routing/back-office/produits.yml"
+   prefix:   /admin/produits
+
+app_utilisateur:
+   resource: "@AppBundle/Resources/config/routing/back-office/utilisateurs.yml"
+   prefix:   /admin/utilisateurs
+
+app_utilisateur_adrese:
+   resource: "@AppBundle/Resources/config/routing/back-office/utilisateuradresse.yml"
+   prefix:   /admin/utilisateursadresse

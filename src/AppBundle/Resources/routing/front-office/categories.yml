@@ -1,0 +1,4 @@
+front_categories_index:
+    path:     /liste-categories
+    defaults: { _controller: "AppBundle:FrontOffice/CategoriesFront:index" }
+    methods:  GET

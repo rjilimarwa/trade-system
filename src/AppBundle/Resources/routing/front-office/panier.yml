@@ -1,0 +1,14 @@
+front_panier_menu:
+    path:     /liste-panier
+    defaults: { _controller: "AppBundle:FrontOffice/LivraisonFront:livraison" }
+    methods:  GET
+
+front_panier_ajout:
+    path:     /adresse-supression
+    defaults: { _controller: "AppBundle:FrontOffice/PropertyLivraison:adresseSuppresion" }
+    methods:  GET
+
+front_panier_supprimer:
+    path:     /set-livrasion
+    defaults: { _controller: "AppBundle:FrontOffice/PropertyFront:setLivraisonSession" }
+

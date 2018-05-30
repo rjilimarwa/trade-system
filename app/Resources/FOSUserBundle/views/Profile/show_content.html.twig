@@ -1,0 +1,22 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="row">
+
+    <div class="col-md-3">
+        {% include '@Utilisateurs/Default/modulesUsed/utilisateursConnecte.html.twig' %}
+    </div>
+
+    <div class="col-md-9">
+        <h2>Mes informations</h2>
+        <div id="collapseOne" class="accordion-body collapse in">
+            <div class="accordion-inner">
+
+                <div class="col-md-6">
+                    <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
+                    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

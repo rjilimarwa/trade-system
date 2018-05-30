@@ -1,0 +1,14 @@
+front_livraison_livraison:
+    path:     /a-livrer
+    defaults: { _controller: "AppBundle:FrontOffice/LivraisonFront:livraison" }
+    methods:  GET
+
+front_livraison_adresse_suppresion:
+    path:     /adresse-supression
+    defaults: { _controller: "AppBundle:FrontOffice/PropertyLivraison:adresseSuppresion" }
+    methods:  GET
+
+front_produits_set_livrasion_session:
+    path:     /set-livrasion
+    defaults: { _controller: "AppBundle:FrontOffice/PropertyFront:setLivraisonSession" }
+

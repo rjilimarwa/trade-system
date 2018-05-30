@@ -1,0 +1,8 @@
+app_backOffice:
+    resource: "@AppBundle/Resources/config/routing/backOffice.yml"
+    prefix:   /
+
+app_frontOffice:
+    resource: "@AppBundle/Resources/config/routing/frontOffice.yml"
+    prefix:   /
+

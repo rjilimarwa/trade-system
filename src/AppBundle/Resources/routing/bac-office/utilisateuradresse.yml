@@ -1,0 +1,24 @@
+utilisateuradresse_index:
+    path:     /
+    defaults: { _controller: "AppBundle:UtilisateurAdresse:index" }
+    methods:  GET
+
+utilisateuradresse_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:UtilisateurAdresse:show" }
+    methods:  GET
+
+utilisateuradresse_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:UtilisateurAdresse:new" }
+    methods:  [GET, POST]
+
+utilisateuradresse_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:UtilisateurAdresse:edit" }
+    methods:  [GET, POST]
+
+utilisateuradresse_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:UtilisateurAdresse:delete" }
+    methods:  DELETE

@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% set totalHT = 0 %}
+{% set totalTTC = 0 %}
+{% set refTva = {} %}
+{% for produit in produits %}
+    {% set refTva = refTva|merge({ ('%'~produit.tva.valeur) : 0 }) %}
+{% endfor %}
+
+{% block body %}
+
+            {% include 'AppBundle/FrontOffice/Default/col-left.html.twig' %}
+            <div class="col-md-8">
+                <h2>Valider mon parnier</h2>
+                <form>
+                    <table class="table table-striped table-hover">
+                        <thead>
+                        <tr>
+                            <th>Références</th>
+                            <th>Quantité</th>
+                            <th>Prix unitaire</th>
+                            <th>Total HT</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for produit in produits %}
+                            <tr>
+                                <td>{{ produit.nom }}</td>
+                                <td>{{ panier[produit.id] }}</td>
+                                <td>{{ produit.prix }} €</td>
+                                <td>{{ produit.prix * panier[produit.id] }} €</td>
+                            </tr>
+                            {% set totalHT = totalHT + (produit.prix * panier[produit.id]) %}
+                            {% set totalTTC = totalTTC + (produit.prix * panier[produit.id])|tva(produit.tva.multiplicate) %}
+                            {% set refTva = refTva|merge({ ('%' ~ produit.tva.valeur) : refTva['%' ~ produit.tva.valeur] + (produit.prix * panier[produit.id])|montantTva(produit.tva.multiplicate) }) %}
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </form>
+
+                <dl class="dl-horizontal pull-right">
+                    <dt>Total HT :</dt>
+                    <dd>{{ totalHT }} €</dd>
+                    {% for key, tva in refTva %}
+                        <dt>TVA {{ key }} :</dt>
+                        <dd> {{ tva }} €</dd>
+                    {% endfor %}
+                    <dd></dd>
+
+                    <dt>Total:</dt>
+                    <dd>{{ totalTTC }} €</dd>
+                </dl>
+
+                <div class="col-md-4">
+                    <dl class="pull-left">
+                        <dt><h4>Adresse de livraison</h4></dt>
+                        <dt>{{ livraison.prenom }} {{ livraison.nom }}</dt>
+                        <dt>{{ livraison.adresse }}</dt>
+                        <dt>{{ livraison.cp }} {{ livraison.ville }} - {{ livraison.pays }}</dt>
+                    </dl>
+                </div>
+                <div class="col-md-4">
+                    <dl class="pull-left">
+                        <dt><h4>Adresse de facturation</h4></dt>
+                        <dt>{{ facturation.prenom }} {{ facturation.nom }}</dt>
+                        <dt>{{ facturation.adresse }}</dt>
+                        <dt>{{ facturation.cp }} {{ facturation.ville }} - {{ facturation.pays }}</dt>
+                    </dl>
+                </div>
+
+
+                <div class="clearfix"></div>
+                <a href="#" class="btn btn-success pull-right">Payer</a>
+                <a href="{{ path('livraison') }}" class="pull-left btn btn-info pull-right">Retour</a>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

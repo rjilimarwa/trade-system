@@ -1,0 +1,4 @@
+front_test_formulaire:
+    path:     /connecter
+    defaults: { _controller: "AppBundle:FrontOffice/TestFront:TestFormulaire" }
+    methods:  GET

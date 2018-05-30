@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <h1>{{ titre }}</h1>
+        {{ form_start(form, { 'action': path('testFormulaire') }, {'method': 'POST'}) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

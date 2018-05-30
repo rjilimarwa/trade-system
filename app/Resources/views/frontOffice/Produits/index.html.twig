@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+            {% include '@Ecommerce/Front/Default/col-left.html.twig' %}
+            {% if produits|length != 0 %}
+
+                            {% for produit in produits %}
+
+                                        <img src="{{ produit.image.path }}" alt="DevAndClick" width="470" height="310">
+
+                                            <h4>{{ produit.nom }}</h4>
+                                            <p>{{ produit.prix|tva(produit.tva.multiplicate) }} €</p>
+                                            <a class="btn btn-primary"
+                                               href="{{ path('produit', { 'id' : produit.id }) }}">Plus d'infos</a>
+                                            {% if panier[produit.id] is not defined %}
+                                                <a class="btn btn-success"
+                                                   href="{{ path('ajouter', { 'id' : produit.id }) }}">Ajouter au
+                                                    panier</a>
+                                            {% endif %}
+
+                            {% endfor %}
+
+
+                                {{ knp_pagination_render(produits) }}
+
+
+
+            {% else %}
+                Aucun produit
+            {% endif %}
+
+
+{% endblock %}
