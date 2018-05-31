@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace AppBundle\Controller\BackOffice;
 
 use AppBundle\Entity\Media;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;

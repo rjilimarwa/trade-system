@@ -14,7 +14,7 @@ hwi_oauth_redirect:
 
 # We override this part of the routing
 hwi_oauth_connect:
-     resource: "@UtilisateursBundle/Resources/config/routing/connect.xml"
+     resource: "@HWIOAuthBundle/Resources/config/routing/connect.xml"
      prefix: /connect
 
 facebook_login:

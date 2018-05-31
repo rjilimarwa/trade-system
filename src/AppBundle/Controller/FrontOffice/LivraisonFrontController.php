@@ -6,7 +6,7 @@
  * Time: 11:10
  */
 
-namespace AppBundle\Controller;
+namespace AppBundle\Controller\FrontOffice;
 use AppBundle\Entity\Utilisateurs;
 use AppBundle\Entity\UtilisateursAdresses;
 use AppBundle\Form\UtilisateursAdressesType;
@@ -14,7 +14,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-class LivraisonController extends Controller
+class LivraisonFrontController extends Controller
 {
     /**
      * @Route("/livraison", name="livraison")

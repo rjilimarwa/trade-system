@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace AppBundle\Controller\FrontOffice;
 
 use EcommerceBundle\Form\RechercheType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;

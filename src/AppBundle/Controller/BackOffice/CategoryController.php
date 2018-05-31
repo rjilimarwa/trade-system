@@ -1,8 +1,8 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace AppBundle\Controller\BackOffice;
 
-use AppBundle\Entity\Categories;
+use AppBundle\Entity\Category;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
  * Category controller.
  *
  */
-class CategoriesController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Lists all category entities.
@@ -33,8 +33,8 @@ class CategoriesController extends Controller
      */
     public function newAction(Request $request)
     {
-        $category = new Category();
-        $form = $this->createForm('AppBundle\Form\CategoriesType', $category);
+        $category= new Category();
+        $form = $this->createForm('AppBundle\Form\CategoryType', $category);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

@@ -1,16 +1,16 @@
 categories_index:
     path:     /
-    defaults: { _controller: "AppBundle:Categories:index" }
+    defaults: { _controller: "AppBundle:BackOffice/Category:index" }
     methods:  GET
 
-categories_show:
+category_show:
     path:     /{id}/show
     defaults: { _controller: "AppBundle:Categories:show" }
     methods:  GET
 
-categories_new:
+category_new:
     path:     /new
-    defaults: { _controller: "AppBundle:Categories:new" }
+    defaults: { _controller: "AppBundle:BackOffice/Category:new" }
     methods:  [GET, POST]
 
 categories_edit:

@@ -1,7 +1,6 @@
 <?php
 
-namespace AppBundle\Controller;
-
+namespace AppBundle\Controller\BackOffice;
 use AppBundle\Entity\Produits;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;

@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace AppBundle\Controller\FrontOffice;
 
 use EWZ\Bundle\RecaptchaBundle\Form\Type\EWZRecaptchaType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
