@@ -34,10 +34,10 @@ class Produits
     private $tva;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Categories", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Category", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
-    private $categories;
+    private $category;
 
     /**
      * @var string
@@ -225,13 +225,13 @@ class Produits
     /**
      * Set categories
      *
-     * @param AppBundle\Entity\Categories $categories
+     * @param AppBundle\Entity\Category $category
      *
      * @return Produits
      */
-    public function setCategories(AppBundle\Entity\Categories $categories)
+    public function setCategories(AppBundle\Entity\Category $category)
     {
-        $this->categories = $categories;
+        $this->category = $category;
 
         return $this;
     }
@@ -239,10 +239,10 @@ class Produits
     /**
      * Get categories
      *
-     * @return AppBundle\Entity\Categories
+     * @return AppBundle\Entity\Category
      */
-    public function getCategories()
+    public function getCategory()
     {
-        return $this->categories;
+        return $this->category;
     }
 }

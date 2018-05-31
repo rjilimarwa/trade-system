@@ -1,11 +1,11 @@
-categories_index:
+category_index:
     path:     /
     defaults: { _controller: "AppBundle:BackOffice/Category:index" }
     methods:  GET
 
 category_show:
     path:     /{id}/show
-    defaults: { _controller: "AppBundle:Categories:show" }
+    defaults: { _controller: "AppBundle:BackOffice/Category:show" }
     methods:  GET
 
 category_new:
@@ -13,12 +13,12 @@ category_new:
     defaults: { _controller: "AppBundle:BackOffice/Category:new" }
     methods:  [GET, POST]
 
-categories_edit:
+category_edit:
     path:     /{id}/edit
-    defaults: { _controller: "AppBundle:Categories:edit" }
+    defaults: { _controller: "AppBundle:BackOffice/Category:edit" }
     methods:  [GET, POST]
 
-categories_delete:
+category_delete:
     path:     /{id}/delete
-    defaults: { _controller: "AppBundle:Categories:delete" }
+    defaults: { _controller: "AppBundle:BackOffice/Category:delete" }
     methods:  DELETE

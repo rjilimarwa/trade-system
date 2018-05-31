@@ -20,7 +20,7 @@ class CategoryController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $categories = $em->getRepository('AppBundle:Categories')->findAll();
+        $categories = $em->getRepository('AppBundle:Category')->findAll();
 
         return $this->render('administration/categories/index.html.twig', array(
             'categories' => $categories,
@@ -42,7 +42,7 @@ class CategoryController extends Controller
             $em->persist($category);
             $em->flush();
 
-            return $this->redirectToRoute('categories_show', array('id' => $category->getId()));
+            return $this->redirectToRoute('category_show', array('id' => $category->getId()));
         }
 
         return $this->render('administration/categories/new.html.twig', array(
@@ -55,7 +55,7 @@ class CategoryController extends Controller
      * Finds and displays a category entity.
      *
      */
-    public function showAction(Categories $category)
+    public function showAction(Category $category)
     {
         $deleteForm = $this->createDeleteForm($category);
 
@@ -69,7 +69,7 @@ class CategoryController extends Controller
      * Displays a form to edit an existing category entity.
      *
      */
-    public function editAction(Request $request, Categories $category)
+    public function editAction(Request $request, Category $category)
     {
         $deleteForm = $this->createDeleteForm($category);
         $editForm = $this->createForm('AppBundle\Form\CategoriesType', $category);
@@ -78,7 +78,7 @@ class CategoryController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('categories_edit', array('id' => $category->getId()));
+            return $this->redirectToRoute('category_edit', array('id' => $category->getId()));
         }
 
         return $this->render('administration/categories/edit.html.twig', array(
@@ -92,7 +92,7 @@ class CategoryController extends Controller
      * Deletes a category entity.
      *
      */
-    public function deleteAction(Request $request, Categories $category)
+    public function deleteAction(Request $request, Category $category)
     {
         $form = $this->createDeleteForm($category);
         $form->handleRequest($request);
@@ -103,7 +103,7 @@ class CategoryController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('categories_index');
+        return $this->redirectToRoute('category_index');
     }
 
     /**
@@ -113,10 +113,10 @@ class CategoryController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Categories $category)
+    private function createDeleteForm(Category $category)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('categories_delete', array('id' => $category->getId())))
+            ->setAction($this->generateUrl('category_delete', array('id' => $category->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

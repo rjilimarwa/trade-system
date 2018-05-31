@@ -21,11 +21,7 @@ class Category
      */
     private $id;
 
-    /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Media", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $image;
+
 
     /**
      * @var string
@@ -33,7 +29,10 @@ class Category
      * @ORM\Column(name="nom", type="string", length=255)
      */
     private $nom;
-
+    /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Image", cascade={"persist", "remove"})
+     */
+    private $image;
 
     /**
      * Get id
@@ -50,7 +49,7 @@ class Category
      *
      * @param string $nom
      *
-     * @return Categories
+     * @return category
      */
     public function setNom($nom)
     {
@@ -72,11 +71,11 @@ class Category
     /**
      * Set image
      *
-     * @param AppBundle\Entity\Media $image
+     * @param \AppBundle\Entity\Image $image
      *
-     * @return Categories
+     * @return Category
      */
-    public function setImage(AppBundle\Entity\Media $image)
+    public function setImage(\AppBundle\Entity\Image $image = null)
     {
         $this->image = $image;
 
@@ -86,10 +85,11 @@ class Category
     /**
      * Get image
      *
-     * @return AppBundle\Entity\Media
+     * @return \AppBundle\Entity\Image
      */
     public function getImage()
     {
         return $this->image;
     }
+
 }

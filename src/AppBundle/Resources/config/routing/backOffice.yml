@@ -1,4 +1,4 @@
-app_categories:
+app_category:
    resource: "@AppBundle/Resources/config/routing/back-office/category.yml"
    prefix:   /admin/categories
 
