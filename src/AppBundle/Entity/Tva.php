@@ -22,23 +22,23 @@ class Tva
     /**
      * @var bool
      *
-     * @ORM\Column(name="nom", type="string")
+     * @ORM\Column(name="name", type="string")
      */
-    private $nom;
+    private $name;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="multiplicate", type="float")
+     * @ORM\Column(name="multiplicate", type="integer")
      */
     private $multiplicate;
 
     /**
-     * @var float
+     * @var integer
      *
-     * @ORM\Column(name="valeur", type="float")
+     * @ORM\Column(name="value",type="integer" )
      */
-    private $valeur;
+    private $value;
 
 
     /**
@@ -52,27 +52,27 @@ class Tva
     }
 
     /**
-     * Set nom
+     * Set name
      *
-     * @param string $nom
+     * @param string $name
      *
      * @return Tva
      */
-    public function setNom($nom)
+    public function setName($name)
     {
-        $this->nom = $nom;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get nom
+     * Get name
      *
      * @return string
      */
-    public function getNom()
+    public function getName()
     {
-        return $this->nom;
+        return $this->name;
     }
 
     /**
@@ -100,27 +100,27 @@ class Tva
     }
 
     /**
-     * Set valeur
+     * Set value
      *
-     * @param float $valeur
+     * @param integer $value
      *
      * @return Tva
      */
-    public function setValeur($valeur)
+    public function setValue($value)
     {
-        $this->valeur = $valeur;
+        $this->value = $value;
 
         return $this;
     }
 
     /**
-     * Get valeur
+     * Get value
      *
-     * @return float
+     * @return integer
      */
-    public function getValeur()
+    public function getValue()
     {
-        return $this->valeur;
+        return $this->value;
     }
 }
 

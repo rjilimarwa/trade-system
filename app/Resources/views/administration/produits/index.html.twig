@@ -17,18 +17,20 @@
         <tbody>
         {% for produit in produits %}
             <tr>
-                <td><a href="{{ path('produits_show', { 'id': produit.id }) }}">{{ produit.id }}</a></td>
-                <td>{{ produit.nom }}</td>
+                <td><a href="{{ path('produit_show', { 'id': produit.id }) }}">{{ produit.id }}</a></td>
+                <td>{{ produit.name}}</td>
                 <td>{{ produit.description }}</td>
                 <td>{{ produit.prix }}</td>
-                <td>{% if produit.disponible %}Yes{% else %}No{% endif %}</td>
+                <td>{% if produit.available %}Yes{% else %}No{% endif %}</td>
+                <td>{{ produit.category.name }}</td>
+                <td>{{ produit.tva.name }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('produits_show', { 'id': produit.id }) }}">show</a>
+                            <a href="{{ path('produit_show', { 'id': produit.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('produits_edit', { 'id': produit.id }) }}">edit</a>
+                            <a href="{{ path('produit_edit', { 'id': produit.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -39,7 +41,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('produits_new') }}">Create a new produit</a>
+            <a href="{{ path('produit_new') }}">Create a new produit</a>
         </li>
     </ul>
 {% endblock %}

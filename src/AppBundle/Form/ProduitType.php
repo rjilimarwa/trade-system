@@ -2,19 +2,25 @@
 
 namespace AppBundle\Form;
 use AppBundle\Entity\Category;
+use AppBundle\Entity\Tva;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ProduitsType extends AbstractType
+class ProduitType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')->add('description')->add('prix')->add('disponible')->add('image')->add('tva') ->add('category', EntityType::class, array(
+        $builder->add('name')->add('description')->add('prix')->add('available')->add('image', ImageType::class, array(
+            'required'=> is_null($builder->getData()->getImage()),
+            'label'=> 'Image')) ->add('tva', EntityType::class, array(
+            'class'=> Tva::class,
+            'choice_label'=>'name',
+            'placeholder'=>'to choose tva' ))->add('category', EntityType::class, array(
             'class'=> Category::class,
             'choice_label'=>'name',
             'placeholder'=>'choisir category'
@@ -25,7 +31,7 @@ class ProduitsType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Produits'
+            'data_class' => 'AppBundle\Entity\Produit'
         ));
     }
 
@@ -34,7 +40,7 @@ class ProduitsType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_produits';
+        return 'appbundle_produit';
     }
 
 

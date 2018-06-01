@@ -7,9 +7,9 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Nom</th>
+                <th>Name</th>
                 <th>Multiplicate</th>
-                <th>Valeur</th>
+                <th>Value</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -17,9 +17,9 @@
         {% for tva in tvas %}
             <tr>
                 <td><a href="{{ path('tva_show', { 'id': tva.id }) }}">{{ tva.id }}</a></td>
-                <td>{{ tva.nom }}</td>
+                <td>{{ tva.name }}</td>
                 <td>{{ tva.multiplicate }}</td>
-                <td>{{ tva.valeur }}</td>
+                <td>{{ tva.value}}</td>
                 <td>
                     <ul>
                         <li>

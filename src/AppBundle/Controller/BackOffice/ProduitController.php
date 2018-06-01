@@ -1,7 +1,7 @@
 <?php
 
 namespace AppBundle\Controller\BackOffice;
-use AppBundle\Entity\Produits;
+use AppBundle\Entity\Produit;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
  * Produit controller.
  *
  */
-class ProduitsController extends Controller
+class ProduitController extends Controller
 {
     /**
      * Lists all produit entities.
@@ -19,7 +19,7 @@ class ProduitsController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $produits = $em->getRepository('AppBundle:Produits')->findAll();
+        $produits = $em->getRepository('AppBundle:Produit')->findAll();
 
         return $this->render('administration/produits/index.html.twig', array(
             'produits' => $produits,
@@ -33,7 +33,7 @@ class ProduitsController extends Controller
     public function newAction(Request $request)
     {
         $produit = new Produit();
-        $form = $this->createForm('AppBundle\Form\ProduitsType', $produit);
+        $form = $this->createForm('AppBundle\Form\ProduitType', $produit);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -41,7 +41,7 @@ class ProduitsController extends Controller
             $em->persist($produit);
             $em->flush();
 
-            return $this->redirectToRoute('produits_show', array('id' => $produit->getId()));
+            return $this->redirectToRoute('produit_show', array('id' => $produit->getId()));
         }
 
         return $this->render('administration/produits/new.html.twig', array(
@@ -54,7 +54,7 @@ class ProduitsController extends Controller
      * Finds and displays a produit entity.
      *
      */
-    public function showAction(Produits $produit)
+    public function showAction(Produit $produit)
     {
         $deleteForm = $this->createDeleteForm($produit);
 
@@ -68,16 +68,16 @@ class ProduitsController extends Controller
      * Displays a form to edit an existing produit entity.
      *
      */
-    public function editAction(Request $request, Produits $produit)
+    public function editAction(Request $request, Produit $produit)
     {
         $deleteForm = $this->createDeleteForm($produit);
-        $editForm = $this->createForm('AppBundle\Form\ProduitsType', $produit);
+        $editForm = $this->createForm('AppBundle\Form\ProduitType', $produit);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('produits_edit', array('id' => $produit->getId()));
+            return $this->redirectToRoute('produit_edit', array('id' => $produit->getId()));
         }
 
         return $this->render('administration/produits/edit.html.twig', array(
@@ -91,7 +91,7 @@ class ProduitsController extends Controller
      * Deletes a produit entity.
      *
      */
-    public function deleteAction(Request $request, Produits $produit)
+    public function deleteAction(Request $request, Produit $produit)
     {
         $form = $this->createDeleteForm($produit);
         $form->handleRequest($request);
@@ -102,20 +102,20 @@ class ProduitsController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('produits_index');
+        return $this->redirectToRoute('produit_index');
     }
 
     /**
      * Creates a form to delete a produit entity.
      *
-     * @param Produits $produit The produit entity
+     * @param Produit $produit The produit entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Produits $produit)
+    private function createDeleteForm(Produit $produit)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('produits_delete', array('id' => $produit->getId())))
+            ->setAction($this->generateUrl('produit_delete', array('id' => $produit->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

@@ -1,24 +1,24 @@
 tva_index:
     path:     /
-    defaults: { _controller: "AppBundle:Tva:index" }
+    defaults: { _controller: "AppBundle:BackOffice/Tva:index" }
     methods:  GET
 
 tva_show:
     path:     /{id}/show
-    defaults: { _controller: "AppBundle:Tva:show" }
+    defaults: { _controller: "AppBundle:BackOffice/Tva:show" }
     methods:  GET
 
 tva_new:
     path:     /new
-    defaults: { _controller: "AppBundle:Tva:new" }
+    defaults: { _controller: "AppBundle:BackOffice/Tva:new" }
     methods:  [GET, POST]
 
 tva_edit:
     path:     /{id}/edit
-    defaults: { _controller: "AppBundle:Tva:edit" }
+    defaults: { _controller: "AppBundle:BackOffice/Tva:edit" }
     methods:  [GET, POST]
 
 tva_delete:
     path:     /{id}/delete
-    defaults: { _controller: "AppBundle:Tva:delete" }
+    defaults: { _controller: "AppBundle:BackOffice/Tva:delete" }
     methods:  DELETE

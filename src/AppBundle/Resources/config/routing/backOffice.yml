@@ -15,7 +15,7 @@ app_tva:
    prefix:   /admin/tva
 
 app_produits:
-   resource: "@AppBundle/Resources/config/routing/back-office/produits.yml"
+   resource: "@AppBundle/Resources/config/routing/back-office/produit.yml"
    prefix:   /admin/produits
 
 app_utilisateur:
