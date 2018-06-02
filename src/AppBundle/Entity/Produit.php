@@ -1,7 +1,7 @@
 <?php
 
 namespace AppBundle\Entity;
-
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -20,7 +20,12 @@ class Produit
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Option", cascade={"persist"})
+     *  * @ORM\JoinTable(name="produit_option")
+     */
 
+    private $options;
     /**
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Image", cascade={"persist", "remove"})
      */
@@ -64,7 +69,11 @@ class Produit
      */
     private $available;
 
-
+    public function __construct()
+    {
+        $this->date       = new \Datetime();
+        $this->options = new ArrayCollection();
+    }
     /**
      * Get id
      *
@@ -243,4 +252,27 @@ class Produit
     {
         return $this->image;
     }
+
+
+
+public function addOption(Option $option)
+{
+
+    $this->options[] = $option;
+}
+
+public function removeOption(Option $option)
+{
+
+    $this->options->removeElement($option);
+}
+
+
+public function getOptions()
+{
+    return $this->options;
+}
+
+
+
 }

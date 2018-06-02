@@ -12,16 +12,22 @@ use Doctrine\ORM\EntityRepository;
  */
 class ProduitRepository extends EntityRepository
 {
-    public function byCategorie($category)
+    public function search($data)
     {
-        $qb = $this->createQueryBuilder('u')
-            ->select('u')
-            ->where('u.category = :category')
-            ->andWhere('u.disponible = 1')
-            ->orderBy('u.id')
-            ->setParameter('category', $category);
-        return $qb->getQuery()->getResult();
+        $qb = $this->createQueryBuilder('p')
+            ->orderBy('p.id', 'DESC');
+
+        if (!empty($data['category'])) {
+            $qb->andWhere('p.category = :cat')->setParameter('cat', $data['category']);
+        }
+
+
+
+
+
+        return $qb; // on fait return $qb quand on utilise le KnpPginatorBundle
     }
+
 
     public function recherche($chaine)
     {

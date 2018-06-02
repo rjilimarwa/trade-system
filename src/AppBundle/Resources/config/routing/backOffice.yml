@@ -2,9 +2,11 @@ app_category:
    resource: "@AppBundle/Resources/config/routing/back-office/category.yml"
    prefix:   /admin/categories
 
-app_ville:
-   resource: "@AppBundle/Resources/config/routing/back-office/commandes.yml"
-   prefix:   /admin/commandes
+app_commande:
+   resource: "@AppBundle/Resources/config/routing/back-office/commande.yml"
+   prefix:   /admin/commande
+
+
 
 app_ region:
    resource: "@AppBundle/Resources/config/routing/back-office/media.yml"

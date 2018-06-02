@@ -39,85 +39,11 @@ class Utilisateurs extends BaseUser
      */
     public $recaptcha;
 
-    /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Commandes", mappedBy="utilisateur", cascade={"remove"})
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $commandes;
 
-    /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\UtilisateursAdresses", mappedBy="utilisateur", cascade={"remove"})
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $adresses;
 
-    /**
-     * Add commande
-     *
-     * @param AppeBundle\Entity\Commandes $commande
-     *
-     * @return Utilisateurs
-     */
-    public function addCommande(AppBundle\Entity\Commandes $commande)
-    {
-        $this->commandes[] = $commande;
 
-        return $this;
-    }
 
-    /**
-     * Remove commande
-     *
-     * @param AppBundle\Entity\Commandes $commande
-     */
-    public function removeCommande(AppBundle\Entity\Commandes $commande)
-    {
-        $this->commandes->removeElement($commande);
-    }
 
-    /**
-     * Get commandes
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCommandes()
-    {
-        return $this->commandes;
-    }
-
-    /**
-     * Add adresses
-     *
-     * @param AppBundle\Entity\UtilisateursAdresses $adress
-     *
-     * @return Utilisateurs
-     */
-    public function addAdress(AppBundle\Entity\UtilisateursAdresses $adresses)
-    {
-        $this->adresses[] = $adresses;
-
-        return $this;
-    }
-
-    /**
-     * Remove adresses
-     *
-     * @param AppBundle\Entity\UtilisateursAdresses $adresses
-     */
-    public function removeAdress(AppBundle\Entity\UtilisateursAdresses $adresses)
-    {
-        $this->adresses->removeElement($adresses);
-    }
-
-    /**
-     * Get adresses
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getAdresses()
-    {
-        return $this->adresses;
-    }
 
     /**
      * Set facebookId

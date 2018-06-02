@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller\BackOffice;
 use AppBundle\Entity\Produit;
+use AppBundle\Entity\Option;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -39,6 +40,11 @@ class ProduitController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($produit);
+            foreach($produit->getOptions()as $option)
+            {
+                $em->persist($option);
+            }
+
             $em->flush();
 
             return $this->redirectToRoute('produit_show', array('id' => $produit->getId()));

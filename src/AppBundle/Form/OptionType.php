@@ -1,35 +1,36 @@
 <?php
 
 namespace AppBundle\Form;
-
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use AppBundle\Entity\Option;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CommandesType extends AbstractType
+class OptionType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('valider')->add('date')->add('reference')->add('produits')->add('utilisateur');
+        $builder->add('name')->add('value');
+
     }/**
-     * {@inheritdoc}
-     */
+ * {@inheritdoc}
+ */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Commandes'
+            'data_class' => Option::class,
         ));
     }
-
     /**
      * {@inheritdoc}
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_commandes';
+        return 'appbundle_option';
     }
 
 

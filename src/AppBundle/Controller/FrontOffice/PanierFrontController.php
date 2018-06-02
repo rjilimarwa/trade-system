@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 
-class PanierController extends Controller
+class PanierFrontController extends Controller
 {
     public function menuAction(Request $request)
     {
@@ -18,7 +18,7 @@ class PanierController extends Controller
         } else {
             $articles = count($session->get('panier'));
         }
-        return $this->render('AppBundle/FrontOffice/categories/modulesUsed/panier.html.twig', array('articles' => $articles));
+        return $this->render('FrontOffice/categories/panier.html.twig', array('articles' => $articles));
     }
 
     /**
@@ -91,8 +91,8 @@ class PanierController extends Controller
         }
 
         $em = $this->getDoctrine()->getManager();
-        $produits = $em->getRepository('AppBundle:Produits')->findArray(array_keys($session->get('panier')));
-        return $this->render('AppBundle/frontOffice/Panier/index.html.twig', array('titre' => 'Panier',
+        $produits = $em->getRepository('AppBundle:Produit')->findArray(array_keys($session->get('panier')));
+        return $this->render('frontOffice/Panier/index.html.twig', array('titre' => 'Panier',
             'produits' => $produits,
             'panier' => $session->get('panier')));
     }

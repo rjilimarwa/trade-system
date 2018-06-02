@@ -1,5 +1,5 @@
-front_produits:
-    resource: "@AppBundle/Resources/config/routing/front-office/produits.yml"
+front_produit:
+    resource: "@AppBundle/Resources/config/routing/front-office/produit.yml"
 
 front_livraison:
     resource: "@AppBundle/Resources/config/routing/front-office/livraison.yml"
@@ -8,8 +8,8 @@ front_panier:
     resource: "@AppBundle/Resources/config/routing/front-office/panier.yml"
 
 
-front_categories:
-    resource: "@AppBundle/Resources/config/routing/front-office/categories.yml"
+front_category:
+    resource: "@AppBundle/Resources/config/routing/front-office/category.yml"
 
 front_test:
     resource: "@AppBundle/Resources/config/routing/front-office/test.yml"

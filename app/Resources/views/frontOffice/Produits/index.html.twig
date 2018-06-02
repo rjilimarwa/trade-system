@@ -3,22 +3,17 @@
 {% block body %}
 
 
-            {% include '@Ecommerce/Front/Default/col-left.html.twig' %}
-            {% if produits|length != 0 %}
+
+
 
                             {% for produit in produits %}
 
-                                        <img src="{{ produit.image.path }}" alt="DevAndClick" width="470" height="310">
+                                <img src="{{ asset(produit.image.webPath) }}" alt="properties-3"
+                                     class="img-responsive">
 
-                                            <h4>{{ produit.nom }}</h4>
-                                            <p>{{ produit.prix|tva(produit.tva.multiplicate) }} €</p>
-                                            <a class="btn btn-primary"
-                                               href="{{ path('produit', { 'id' : produit.id }) }}">Plus d'infos</a>
-                                            {% if panier[produit.id] is not defined %}
-                                                <a class="btn btn-success"
-                                                   href="{{ path('ajouter', { 'id' : produit.id }) }}">Ajouter au
-                                                    panier</a>
-                                            {% endif %}
+                                            <h4>{{ produit.name }}</h4>
+                                            <p>{{ produit.tva.name }} €</p>
+                                            <p>{{ produit.category.name }} €</p>
 
                             {% endfor %}
 
@@ -27,9 +22,9 @@
 
 
 
-            {% else %}
-                Aucun produit
-            {% endif %}
+
+
+
 
 
 {% endblock %}

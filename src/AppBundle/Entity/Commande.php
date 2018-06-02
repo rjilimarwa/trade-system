@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Commandes
+ * Commande
  *
- * @ORM\Table(name="commandes")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\CommandesRepository")
+ * @ORM\Table(name="commande")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CommandeRepository")
  */
-class Commandes
+class Commande
 {
     /**
      * @var int
@@ -21,11 +21,7 @@ class Commandes
      */
     private $id;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Utilisateurs", inversedBy="commandes")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $utilisateur;
+
 
     /**
      * @var bool
@@ -162,23 +158,5 @@ class Commandes
         return $this->produits;
     }
 
-    /**
-     * Set utilisateur
-     * @return Commandes
-     */
-    public function setUtilisateur(AppBundle\Entity\Utilisateurs $utilisateur = null)
-    {
-        $this->utilisateur = $utilisateur;
-        return $this;
-    }
 
-    /**
-     * Get utilisateur
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getUtilisateur()
-    {
-        return $this->utilisateur;
-    }
 }

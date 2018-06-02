@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller\BackOffice;
 
-use AppBundle\Entity\Commandes;
+use AppBundle\Entity\Commande;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
  * Commande controller.
  *
  */
-class CommandesController extends Controller
+class CommandeController extends Controller
 {
     /**
      * Lists all commande entities.
@@ -20,7 +20,7 @@ class CommandesController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $commandes = $em->getRepository('AppBundle:Commandes')->findAll();
+        $commandes = $em->getRepository('AppBundle:Commande')->findAll();
 
         return $this->render('administration/commandes/index.html.twig', array(
             'commandes' => $commandes,
@@ -34,7 +34,7 @@ class CommandesController extends Controller
     public function newAction(Request $request)
     {
         $commande = new Commande();
-        $form = $this->createForm('AppBundle\Form\CommandesType', $commande);
+        $form = $this->createForm('AppBundle\Form\CommandeType', $commande);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -42,7 +42,7 @@ class CommandesController extends Controller
             $em->persist($commande);
             $em->flush();
 
-            return $this->redirectToRoute('commandes_show', array('id' => $commande->getId()));
+            return $this->redirectToRoute('commande_show', array('id' => $commande->getId()));
         }
 
         return $this->render('administration/commandes/new.html.twig', array(
@@ -55,7 +55,7 @@ class CommandesController extends Controller
      * Finds and displays a commande entity.
      *
      */
-    public function showAction(Commandes $commande)
+    public function showAction(Commande $commande)
     {
         $deleteForm = $this->createDeleteForm($commande);
 
@@ -69,16 +69,16 @@ class CommandesController extends Controller
      * Displays a form to edit an existing commande entity.
      *
      */
-    public function editAction(Request $request, Commandes $commande)
+    public function editAction(Request $request, Commande $commande)
     {
         $deleteForm = $this->createDeleteForm($commande);
-        $editForm = $this->createForm('AppBundle\Form\CommandesType', $commande);
+        $editForm = $this->createForm('AppBundle\Form\CommandeType', $commande);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('commandes_edit', array('id' => $commande->getId()));
+            return $this->redirectToRoute('commande_edit', array('id' => $commande->getId()));
         }
 
         return $this->render('administration/commandes/edit.html.twig', array(
@@ -92,7 +92,7 @@ class CommandesController extends Controller
      * Deletes a commande entity.
      *
      */
-    public function deleteAction(Request $request, Commandes $commande)
+    public function deleteAction(Request $request, Commande $commande)
     {
         $form = $this->createDeleteForm($commande);
         $form->handleRequest($request);

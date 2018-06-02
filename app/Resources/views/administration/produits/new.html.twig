@@ -4,10 +4,19 @@
     <h1>Produit creation</h1>
 
     {{ form_start(form) }}
-        {{ form_widget(form) }}
+        {{ form_widget(form.name) }}
+        {{ form_widget(form.description) }}
+        {{ form_widget(form.available) }}
+        {{ form_widget(form.category) }}
+        {{ form_widget(form.tva) }}
+        <ul class="options" data-prototype="{{ form_widget(form.options.vars.prototype)|e('html_attr') }}">
+            {# iterate over each existing tag and render its only field: name #}
+            {{ form_label(form.options) }}
+            {% for option in form.options %}
+                <li>{{ form_row(option) }}</li>
+            {% endfor %}
+        </ul>
         <input type="submit" value="Create" />
-    {{ form_end(form) }}
-
     <ul>
         <li>
             <a href="{{ path('produit_index') }}">Back to the list</a>

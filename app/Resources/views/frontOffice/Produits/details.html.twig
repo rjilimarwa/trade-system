@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 
-{% block titre %} | {{ produit.nom }}{% endblock %}
+{% block titre %} | {{ produit.name }}{% endblock %}
 {% block description %}{{ produit.description }}{% endblock %}
 
 
@@ -13,14 +13,15 @@
             <div class="col-md-9">
                 <div class="row">
                     <div class="col-md-5">
-                        <img src="{{ produit.image.path }}" width="300" height="300" alt="DevAndClick">
+                        <img src="{{ asset(produit.image.webPath) }}" alt="properties-3"
+                             class="img-responsive">
                     </div>
 
                     <div class="col-md-4">
-                        <h4>{{ produit.nom }}</h4>
-                        <h5>{{ produit.categories.nom }}</h5>
+                        <h4>{{ produit.name }}</h4>
+                        <h5>{{ produit.category.name}}</h5>
                         <p>{{ produit.description }}</p>
-                        <h4>{{ produit.prix|tva(produit.tva.multiplicate) }}€</h4>
+                        <h4>{{ produit.tva.name) }}€</h4>
                         {% if panier[produit.id] is not defined %}
                             <form action="{{ path('ajouter', { 'id' : produit.id }) }}" method="get">
                                 <select name="qte" class="span1 form-control">

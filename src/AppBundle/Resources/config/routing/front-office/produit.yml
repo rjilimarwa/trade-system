@@ -1,0 +1,22 @@
+front_produit_index:
+    path:     /liste-produits
+    defaults: { _controller: "AppBundle:FrontOffice/ProduitFront:index" }
+    methods:  GET
+
+front_produit_recherche_traitement:
+    path:     /rechercheTraitementProduits
+    defaults: { _controller: "AppBundle:FrontOffice/ProduitFront:rechercheTraitement" }
+    methods:  GET
+
+front_produit_recherche:
+    path:     /rehercheproduits
+    defaults: { _controller: "AppBundle:FrontOffice/ProduitFront:recherche" }
+
+front_produit_search:
+    path:     /presentation-produits
+    defaults: { _controller: "AppBundle:FrontOffice/ProduitFront:search" }
+    methods:  GET
+
+front_produit_form_search:
+    path:     /display-form
+    defaults: { _controller: "AppBundle:FrontOffice/ProduitFront:formSearch" }
